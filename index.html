@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/index.css" />
+
+    <title>QR Code Generator</title>
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-dark green-bg">
+      <a class="navbar-brand p-0" href="#">
+        <img
+          src="images/upang-logo.png.png"
+          width="50"
+          height="50"
+          class="d-inline-block"
+          alt=""
+        />
+        QR Code Generator
+      </a>
+    </nav>
+
+    <!-- Main content -->
+    <div class="container my-4">
+      <div class="card">
+        <div class="card-header">Record Details</div>
+        <div class="card-body">
+          <!-- Main Form -->
+          <form
+            id="main-form"
+            class="needs-validation"
+            name="personal-information-form"
+            novalidate
+          >
+            <h5 class="card-title">Personal Information</h5>
+
+            <div class="form-row">
+              <!-- Full Name -->
+              <div class="form-group col-md-6">
+                <label for="full-name-input">Full Name</label>
+                <input
+                  type="text"
+                  name="full-name"
+                  class="form-control"
+                  id="full-name-input"
+                  placeholder="Mamaril Hannah R."
+                  required
+                />
+                <div class="invalid-feedback">Please enter your full name.</div>
+              </div>
+
+              <!-- Contact Number -->
+              <div class="form-group col-md-6">
+                <label for="contact-number-input">Contact Number</label>
+                <input
+                  type="number"
+                  name="contact-number"
+                  class="form-control"
+                  id="contact-number-input"
+                  placeholder="0936523764"
+                  required
+                />
+                <div class="invalid-feedback">
+                  Please enter your contact number.
+                </div>
+              </div>
+            </div>
+
+            <!-- Address -->
+            <div class="form-group">
+              <label for="address-input">Address</label>
+              <input
+                type="text"
+                name="address"
+                class="form-control"
+                id="address-input"
+                placeholder="Dagupan, Pangasinan"
+                required
+              />
+              <div class="invalid-feedback">Please enter your address.</div>
+            </div>
+
+            <div class="form-row">
+              <!-- Age -->
+              <div class="form-group col-md-6">
+                <label for="age-input">Age</label>
+                <input
+                  type="number"
+                  name="age"
+                  class="form-control"
+                  id="age-input"
+                  placeholder="20"
+                  required
+                />
+                <div class="invalid-feedback">Please enter your age.</div>
+              </div>
+
+              <!-- Temperature -->
+              <div class="form-group col-md-6">
+                <label for="temperature-input">Temperature</label>
+                <input
+                  type="number"
+                  name="temperature"
+                  class="form-control"
+                  id="temperature-input"
+                  placeholder="36.8"
+                  required
+                />
+                <div class="invalid-feedback">
+                  Please enter your temperature.
+                </div>
+              </div>
+            </div>
+
+            <!-- Gender -->
+            <div class="form-group">
+              <label class="d-block">Gender</label>
+              <div class="form-check form-check-inline">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  id="male-input"
+                  name="gender-radio-input"
+                  value="Male"
+                  required
+                />
+                <label class="form-check-label" for="male-input">Male</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  id="female-input"
+                  name="gender-radio-input"
+                  value="Female"
+                />
+                <label class="form-check-label" for="female-input"
+                  >Female</label
+                >
+              </div>
+              <div class="invalid-feedback">Please select your gender.</div>
+            </div>
+
+            <!-- Reason -->
+            <div class="form-group">
+              <label for="reason">Reason</label>
+              <select name="reason" class="form-control" required>
+                <option value selected>Choose...</option>
+                <option value="Inquire">Inquire</option>
+                <option value="Modules">Modules</option>
+                <option value="Tuition">Tuition</option>
+                <option value="School Requirements">School Requirements</option>
+                <option value="Others">Others</option>
+              </select>
+              <div class="invalid-feedback">Please enter your reason.</div>
+            </div>
+
+            <!-- Generate QR Code Button -->
+            <div class="text-center mt-4">
+              <button
+                type="submit"
+                class="btn btn-info text-center"
+                onclick="validateForm()"
+              >
+                Generate QR Code
+              </button>
+            </div>
+          </form>
+
+          <!-- QR Code Modal -->
+          <div
+            class="modal fade"
+            id="qr-code-modal"
+            data-backdrop="static"
+            data-keyboard="false"
+            tabindex="-1"
+            aria-labelledby="staticBackdropLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header justify-content-center">
+                  <h5 class="modal-title" id="staticBackdropLabel">
+                    Generated QR Code
+                  </h5>
+                </div>
+                <div class="modal-body">
+                  <div
+                    id="qrcode-container"
+                    class="mt-4 d-flex justify-content-center"
+                  >
+                    <canvas id="qrcode"></canvas>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- jQuery and Bootstrap Bundle (includes Popper) -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- QR Code Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+
+    <!-- Custom javascript -->
+    <script src="javascript/index.js"></script>
+  </body>
+</html>
