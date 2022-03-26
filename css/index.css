@@ -1,13 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
 body {
-    font-family: "Poppins", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .green-bg {
-    background-color: #4eb454;
+  background-color: #4eb454;
 }
 
 #qrcode-container {
-    display: none;
+  display: none;
+}
+
+#qr-code-generator-logo {
+  border: 1px solid white;
+  border-radius: 8px;
 }
