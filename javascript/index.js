@@ -1,30 +1,3 @@
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-(function () {
-  "use strict";
-  window.addEventListener(
-    "load",
-    function () {
-      // Fetch all the forms we want to apply custom Bootstrap validation styles to
-      var forms = document.getElementsByClassName("needs-validation");
-      // Loop over them and prevent submission
-      var validation = Array.prototype.filter.call(forms, function (form) {
-        form.addEventListener(
-          "submit",
-          function (event) {
-            if (form.checkValidity() === false) {
-              event.preventDefault();
-              event.stopPropagation();
-            }
-            form.classList.add("was-validated");
-          },
-          false
-        );
-      });
-    },
-    false
-  );
-})();
-
 // Prevent form is refreshing the page in submit form
 let form = document.getElementById("main-form");
 function handleForm(event) {
@@ -76,10 +49,19 @@ function validateForm() {
     temperature != "" &&
     Number.isInteger(parseInt(temperature)) &&
     gender != null &&
-    reason != ""
+    reason != "" &&
+    fullName.length <= 255 &&
+    contactNumber.length <= 12 &&
+    address.length <= 255 &&
+    age.length <= 2 &&
+    temperature.length <= 5 &&
+    gender.value.length <= 6 &&
+    reason.length <= 255
   ) {
     let userData = getUserValues();
     generateQRCode(userData);
+  } else {
+    alert("Please fill up the form properly");
   }
 }
 

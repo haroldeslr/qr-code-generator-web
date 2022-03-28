@@ -62,9 +62,9 @@
                   class="form-control"
                   id="full-name-input"
                   placeholder="Mamaril Hannah R."
+                  maxlength="255"
                   required
                 />
-                <div class="invalid-feedback">Please enter your full name.</div>
               </div>
 
               <!-- Contact Number -->
@@ -76,11 +76,10 @@
                   class="form-control"
                   id="contact-number-input"
                   placeholder="0936523764"
+                  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                  maxlength="12"
                   required
                 />
-                <div class="invalid-feedback">
-                  Please enter your contact number.
-                </div>
               </div>
             </div>
 
@@ -93,9 +92,9 @@
                 class="form-control"
                 id="address-input"
                 placeholder="Dagupan, Pangasinan"
+                maxlength="255"
                 required
               />
-              <div class="invalid-feedback">Please enter your address.</div>
             </div>
 
             <div class="form-row">
@@ -108,9 +107,10 @@
                   class="form-control"
                   id="age-input"
                   placeholder="20"
+                  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                  maxlength="2"
                   required
                 />
-                <div class="invalid-feedback">Please enter your age.</div>
               </div>
 
               <!-- Temperature -->
@@ -122,11 +122,10 @@
                   class="form-control"
                   id="temperature-input"
                   placeholder="36.8"
+                  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                  maxlength="5"
                   required
                 />
-                <div class="invalid-feedback">
-                  Please enter your temperature.
-                </div>
               </div>
             </div>
 
@@ -156,7 +155,6 @@
                   >Female</label
                 >
               </div>
-              <div class="invalid-feedback">Please select your gender.</div>
             </div>
 
             <!-- Reason -->
@@ -170,7 +168,6 @@
                 <option value="School Requirements">School Requirements</option>
                 <option value="Others">Others</option>
               </select>
-              <div class="invalid-feedback">Please enter your reason.</div>
             </div>
 
             <!-- Generate QR Code Button -->
