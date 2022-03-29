@@ -51,11 +51,11 @@ function validateForm() {
     gender != null &&
     reason != "" &&
     fullName.length >= 5 &&
-    fullName.length <= 255 &&
+    fullName.length <= 70 &&
     contactNumber.length >= 9 &&
     contactNumber.length <= 12 &&
     address.length >= 3 &&
-    address.length <= 255 &&
+    address.length <= 70 &&
     age.length <= 2 &&
     temperature.length >= 2 &&
     temperature.length <= 5
