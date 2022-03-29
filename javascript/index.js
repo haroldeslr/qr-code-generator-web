@@ -50,13 +50,15 @@ function validateForm() {
     Number.isInteger(parseInt(temperature)) &&
     gender != null &&
     reason != "" &&
+    fullName.length >= 5 &&
     fullName.length <= 255 &&
+    contactNumber.length >= 9 &&
     contactNumber.length <= 12 &&
+    address.length >= 3 &&
     address.length <= 255 &&
     age.length <= 2 &&
-    temperature.length <= 5 &&
-    gender.value.length <= 6 &&
-    reason.length <= 255
+    temperature.length >= 2 &&
+    temperature.length <= 5
   ) {
     let userData = getUserValues();
     generateQRCode(userData);
